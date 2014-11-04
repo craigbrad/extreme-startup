@@ -39,7 +39,13 @@ describe 'The Startup App' do
     skip
     get '/?q=a5a1bfb0:%20which%20of%20the%20following%20numbers%20is%20both%20a%20square%20and%20a%20cube:%20676,%202304,%20975,%20512'
     expect(last_response).to be_ok
-    expect(last_response.body).to eq('324')
+    expect(last_response.body).to eq('')
+  end
+
+  it "can find a prime number" do
+    get '/?q=c7b2fa20:%20which%20of%20the%20following%20numbers%20are%20primes:%20167,%20989,%20433,%20271'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('167, 433, 271')
   end
 
   it "can find the green animal" do

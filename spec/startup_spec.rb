@@ -71,4 +71,10 @@ describe 'The Startup App' do
     expect(last_response).to be_ok
     expect(last_response.body).to eq('yellow')
   end
+
+  it "can find a number in the fibonacci sequence" do
+    get '/?q=a46ae300:%20what%20is%20the%2010th%20number%20in%20the%20Fibonacci%20sequence'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('55')
+  end
 end

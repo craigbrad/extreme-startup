@@ -2,8 +2,8 @@ require 'sinatra'
 require "sinatra/reloader"
 require "colorize"
 require 'prime'
-require 'banana'
-require 'spainish_currency'
+require './lib/banana'
+require './lib/spainish_currency'
 set :bind, '0.0.0.0'
 
 def find_largest_number(list_of_numbers)

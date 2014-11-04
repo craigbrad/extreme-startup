@@ -23,6 +23,9 @@ get '/' do
   elsif (question.include? 'plus')
     words = question.split(' ')
     (words[2].to_i + words[4].to_i).to_s
+  elsif (question.include? 'power')
+    words = question.split(' ')
+    (words[2].to_i ** words[7].to_i).to_s
   elsif (question.include? 'multiplied')
     words = question.split(' ')
     (words[2].to_i * words[5].to_i).to_s
@@ -42,6 +45,7 @@ get '/' do
       prime_numbers << number.to_s << ", " if Prime.prime?(number)
     end
     prime_numbers.to_s.chomp(", ")
+
   elsif question.include?("Fibonacci sequence")
     words = question.split(' ')
     number = words[3].chop.chop.to_i

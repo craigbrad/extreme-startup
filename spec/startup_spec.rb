@@ -77,4 +77,10 @@ describe 'The Startup App' do
     expect(last_response).to be_ok
     expect(last_response.body).to eq('55')
   end
+
+  it "can find the square of a number" do
+    get '/?q=56dccc20:%20what%20is%207%20to%20the%20power%20of%208'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('5764801')
+  end
 end

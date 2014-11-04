@@ -1,6 +1,7 @@
 require 'sinatra'
 require "sinatra/reloader"
 require "colorize"
+require 'prime'
 set :bind, '0.0.0.0'
 
 def find_largest_number(list_of_numbers)
@@ -29,8 +30,14 @@ get '/' do
     "Peseta"
   elsif question == "what colour is a banana"
     "yellow"
+  elsif question == "which of the following numbers are primes"
+    numbers = query[2].split(', ').map{ |number| number.to_i }
+    prime_numbers = ""
+    numbers.each do |number| 
+      prime_numbers << number.to_s << ", " if Prime.prime?(number)
+    end
+    prime_numbers.to_s.chomp(", ")
   else
     puts question.red
   end
-  
 end

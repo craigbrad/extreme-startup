@@ -9,6 +9,10 @@ def find_largest_number(list_of_numbers)
   numbers.max.to_s
 end
 
+def fibonacci(n)
+   n <= 1 ? n :  fibonacci( n - 1 ) + fibonacci( n - 2 ) 
+end
+
 get '/' do
   query = params[:q].split(': ')
   question = query[1]
@@ -30,6 +34,7 @@ get '/' do
     "Peseta"
   elsif question == "what colour is a banana"
     "yellow"
+
   elsif question == "which of the following numbers are primes"
     numbers = query[2].split(', ').map{ |number| number.to_i }
     prime_numbers = ""
@@ -37,6 +42,10 @@ get '/' do
       prime_numbers << number.to_s << ", " if Prime.prime?(number)
     end
     prime_numbers.to_s.chomp(", ")
+  elsif question.include?("Fibonacci sequence")
+    words = question.split(' ')
+    number = words[3].chop.chop.to_i
+    fibonacci(number).to_s
   else
     puts question.red
   end

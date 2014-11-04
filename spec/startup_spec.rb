@@ -53,4 +53,16 @@ describe 'The Startup App' do
     expect(last_response).to be_ok
     expect(last_response.body).to eq('Paris')
   end
+
+  it "states which currency was used in Spain before the Euro" do
+    get '/?q=baccc930:%20what%20currency%20did%20Spain%20use%20before%20the%20Euro'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('Peseta')
+  end
+
+  it "states what colour a banana is" do
+    get '?q=b94c41f0:%20what%20colour%20is%20a%20banana'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('yellow')
+  end
 end

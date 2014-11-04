@@ -25,6 +25,10 @@ get '/' do
     "frog"
   elsif question == "which city is the Eiffel tower in"
     "Paris"
+  elsif question == "what currency did Spain use before the Euro"
+    "Peseta"
+  elsif question == "what colour is a banana"
+    "yellow"
   else
     puts question.red
   end

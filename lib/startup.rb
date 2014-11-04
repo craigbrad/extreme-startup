@@ -2,6 +2,8 @@ require 'sinatra'
 require "sinatra/reloader"
 require "colorize"
 require 'prime'
+require 'banana'
+require 'spainish_currency'
 set :bind, '0.0.0.0'
 
 def find_largest_number(list_of_numbers)
@@ -16,6 +18,17 @@ end
 get '/' do
   query = params[:q].split(': ')
   question = query[1]
+
+  answers = [
+    Banana.new(question),
+    SpanishCurrency.new(question),
+  ]
+
+  answers = answers.keep_if { |answer| answer.question_check }
+  if !answers.empty?
+    return answers.first.answer
+  end
+
   if question == 'what is your name'
     'Evolve'
   elsif question == "which of the following numbers is the largest"
@@ -33,10 +46,6 @@ get '/' do
     "frog"
   elsif question == "which city is the Eiffel tower in"
     "Paris"
-  elsif question == "what currency did Spain use before the Euro"
-    "Peseta"
-  elsif question == "what colour is a banana"
-    "yellow"
 
   elsif question == "which of the following numbers are primes"
     numbers = query[2].split(', ').map{ |number| number.to_i }

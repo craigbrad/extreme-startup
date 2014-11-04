@@ -23,6 +23,8 @@ get '/' do
     (words[2].to_i * words[5].to_i).to_s
   elsif question == "which of the following animals is green is th most popular"
     "frog"
+  elsif question == "which city is the Eiffel tower in"
+    "Paris"
   else
     puts question.red
   end

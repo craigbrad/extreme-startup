@@ -47,4 +47,10 @@ describe 'The Startup App' do
     expect(last_response).to be_ok
     expect(last_response.body).to eq('frog')
   end
+
+  it "can state the city where the Eiffel Tower is" do
+    get '/?q=18b55f30:%20which%20city%20is%20the%20Eiffel%20tower%20in'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('Paris')
+  end
 end
